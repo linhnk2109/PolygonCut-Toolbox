@@ -1,152 +1,127 @@
-# PolygonCut-Toolbox
-A standalone benchmarking toolbox for 2D Polygon Cut and Convex Hull algorithms.
+<!--
+    Copyright © 2026, Nam-Dũng Hoang, Nguyen Kieu Linh, and Hoang Xuan Phu
 
+    PolygonCut Toolbox was implemented for the paper:
 
-# PolygonCutProject - User Guide (Binary Version)
+    "Polygonal Cut Algorithms for Finding the Convex Hull
+    of Finite Sets with Linear Complexity"
+-->
 
-## Overview
-
-**PolygonCutProject** is a high-performance Julia framework designed for benchmarking and visualizing various 2D Convex Hull and Polygonal Cut algorithms on large-scale datasets.
-
-This guide explains how to run the **compiled binary version** of the project and visualize the generated results.
 
 ---
 
-# 🛠 Prerequisites
+# Download & Installation
 
-To run the binary executable:
+This toolbox is provided as pre-compiled standalone binaries for both macOS and Windows. You **do not** need to install Julia or compile the source code yourself to run the experiments.
 
-- Julia is **NOT required**.
+## Installation Steps
 
-To use the visualization script (`plot_result.jl`):
-
-- Julia v1.7 or higher is recommended.
-- The `Plots.jl` package must be installed.
-
-Install `Plots.jl` using:
+1. Go to the **Releases** page of this GitHub repository.
+2. Download the appropriate version for your operating system:
+   - **macOS:** `PolygonCutApp-macOS.zip`
+   - **Windows:** `PolygonCutApp-Windows.zip`
+3. Extract the downloaded archive.
+4. Open your terminal (or Command Prompt) and navigate to the extracted `bin` directory:
 
 ```bash
-julia -e 'using Pkg; Pkg.add("Plots")'
+cd PolygonCutApp/bin
 ```
 
 ---
 
-# 📦 Directory Structure
+# Running the Experiments
 
-After compilation, the project structure should look similar to:
-
-```text
-CompiledExperimentApp/
-│
-├── bin/
-│   ├── PolygonCutProject
-│   ├── plot_result.jl
-│
-├── lib/
-├── share/
-├── etc/
-```
-
----
-
-# 🚀 Running the Experiments
-
-## Step 1: Navigate to the Binary Folder
-
-Open your terminal and move to the `bin` directory:
-
-```bash
-cd CompiledExperimentApp/bin
-```
-
----
-
-## Step 2: Execute the Binary
-
-Basic syntax:
-
-```bash
-./PolygonCutProject [OPTIONS]
-```
-
----
-
-# 📌 Available Command-Line Arguments
+## Available Command-Line Arguments
 
 | Argument | Description |
-|----------|-------------|
+|---|---|
 | `--exportResult` | Export generated points and convex hull results to `.csv` files |
-| `--setNumbers` | Number of experimental sets |
+| `--setNumbers` | Number of experimental datasets |
 | `--dataSizes` | Number of generated points |
-| `--algorithms` | Comma-separated list of algorithms to execute |
+| `--algorithms` | Comma-separated list of algorithms to execute (`A1, A2, A3, A4, A5`) |
 
 ---
 
-# ✅ Example Command
+## Example Command
 
 The following command:
-
 - generates one dataset,
 - creates 1000 points,
 - executes algorithms A1–A5,
-- exports all results to CSV files.
+- and exports all results to CSV files.
+
+### macOS / Linux
 
 ```bash
-./PolygonCutProject --exportResult --setNumbers 1 --dataSizes "1000" --algorithms "A1,A2,A3,A4,A5"
+./PolygonCutProject --exportResult --setNumbers 1 --dataSizes 1000 --algorithms A1,A2,A3,A4,A5
+```
+
+### Windows
+
+```cmd
+.\PolygonCutProject.exe --exportResult --setNumbers 1 --dataSizes 1000 --algorithms A1,A2,A3,A4,A5
 ```
 
 ---
 
-# 📁 Output Files
+# Output Files
 
-The generated files are automatically saved in:
+Generated files are automatically saved in:
 
 ```text
-result/Type1/
+result/
 ```
 
 Typical output files include:
 
 ```text
 _INPUT.csv
-A1.csv
-A2.csv
-A3.csv
-A4.csv
-A5.csv
+_A1.csv
+_A1_Alg2.csv
+...
 ```
 
-Where:
+## File Descriptions
 
-- `_INPUT.csv` contains generated input points
-- `A*.csv` contains convex hull vertices or polygon cut results from each algorithm
+- `_INPUT.csv`  
+  Contains generated input points (`X`, `Y` coordinates).
+
+- `_A*.csv`  
+  Contains the original convex hull results from the algorithms.
+
+- `_A*_Alg2.csv`  
+  Contains convex hull results processed using the polygonal cut algorithm.
 
 ---
 
-# 📊 Visualizing the Results
+# Visualizing the Results
 
-A visualization script named `plot_result.jl` is provided to automatically:
+A visualization script named `plot_result.jl` is provided to:
+- automatically load generated CSV files,
+- plot 2D points,
+- draw convex hull boundaries,
+- and save visualizations as `.png` images.
 
-- load the generated CSV files,
-- detect the latest experiment,
-- plot the 2D points,
-- draw the convex hull boundary,
-- save the visualization as a `.png` image.
+> **Note:**  
+> Running the binary application does **not** require Julia.  
+> However, executing the visualization script requires:
+> - Julia v1.7+
+> - the `Plots` package
+>
+> Install using:
+>
+> ```bash
+> julia -e 'using Pkg; Pkg.add("Plots")'
+> ```
 
 ---
 
 ## Step 1: Ensure Script Location
 
-Make sure:
+Make sure the script is located inside:
 
 ```text
-plot_result.jl
-```
-
-is located inside:
-
-```text
-CompiledExperimentApp/bin/
+PolygonCutApp/bin/
 ```
 
 ---
@@ -161,107 +136,36 @@ julia plot_result.jl
 
 ---
 
-# 🖼 Visualization Output
+# Visualization Output
 
 The script automatically:
-
-1. Finds the latest dataset
-2. Loads:
-   - input points
-   - algorithm outputs
-3. Generates:
-   - scatter plot
-   - convex hull polygon
-4. Saves a high-resolution `.png` figure
+- finds the latest dataset in the result directory,
+- loads input points and algorithm outputs,
+- generates scatter plots with convex hull polygons,
+- and saves high-resolution `.png` figures for each tested algorithm.
 
 ---
 
-# ⚠️ Troubleshooting
+# Troubleshooting (macOS Only)
 
-## macOS `libcholmod.dylib` Error
-
-If you encounter an error similar to:
-
-```text
-libcholmod.dylib not found
-```
-
-or other `.dylib` linker issues when running:
+If you encounter a `libcholmod.dylib not found` error on macOS when running:
 
 ```bash
 ./PolygonCutProject
 ```
 
-this is caused by Julia dynamic library linking during the `create_app` process.
-
----
-
-# ✅ Fix
-
-Run the following command inside:
+execute the following commands inside:
 
 ```text
-CompiledExperimentApp/bin/
+PolygonCutApp/bin/
 ```
 
 ```bash
 cp -n /Applications/Julia-1.7.app/Contents/Resources/julia/lib/julia/*.dylib ../lib/julia/ 2>/dev/null
+
+cp -n /Applications/Julia-1.7.app/Contents/Resources/julia/lib/*.dylib ../lib/ 2>/dev/null
 ```
 
-After copying the libraries, rerun:
-
-```bash
-./PolygonCutProject
-```
-
----
-
-# ⚠️ Important Note
-
-If your installed Julia version is not `1.7` (for example `1.8` or `1.9`), modify the path accordingly.
-
-Example:
-
-```bash
-/Applications/Julia-1.9.app/
-```
-
----
-
-# 💡 Additional Notes
-
-- The compiled binary is optimized for performance.
-- Running experiments does not require installing Julia packages.
-- Visualization requires:
-  - Julia
-  - `Plots.jl`
-
----
-
-# 📌 Typical Workflow
-
-## 1. Run Experiments
-
-```bash
-cd CompiledExperimentApp/bin
-
-./PolygonCutProject --exportResult --setNumbers 1 --dataSizes "1000" --algorithms "A1,A2,A3,A4,A5"
-```
-
----
-
-## 2. Visualize Results
-
-```bash
-julia plot_result.jl
-```
-
----
-
-## 3. Check Generated Outputs
-
-Results:
-- CSV files → `result/Type1/`
-- Figures → generated `.png` images
+> If your installed Julia version is not `1.7`, adjust the path accordingly.
 
 ---
