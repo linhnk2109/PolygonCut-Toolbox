@@ -1,12 +1,12 @@
-<!--
-    Copyright © 2026, Nam-Dũng Hoang, Nguyen Kieu Linh, and Hoang Xuan Phu
+# PolygonCut Toolbox
 
-    PolygonCut Toolbox was implemented for the paper:
+> Copyright © 2026, Nam-Dũng Hoang, Nguyen Kieu Linh, and Hoang Xuan Phu
 
-    "Polygonal Cut Algorithms for Finding the Convex Hull
-    of Finite Sets with Linear Complexity"
--->
+This toolbox was implemented for the paper:
 
+> **Polygonal Cut Algorithms for Finding the Convex Hull  
+
+> of Finite Sets with Linear Complexity**
 
 ---
 
