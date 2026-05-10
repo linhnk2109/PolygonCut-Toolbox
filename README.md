@@ -31,14 +31,17 @@ cd PolygonCutApp/bin
 
 # Running the Experiments
 
-## Available Command-Line Arguments
+### Available Command-Line Arguments
 
 | Argument | Description |
-|---|---|
+|----------|-------------|
 | `--exportResult` | Export generated points and convex hull results to `.csv` files |
-| `--setNumbers` | Number of experimental datasets |
+| `--setNumbers` | Number of experimental sets |
 | `--dataSizes` | Number of generated points |
-| `--algorithms` | Comma-separated list of algorithms to execute (`A1, A2, A3, A4, A5`) |
+| `--algorithms` | Comma-separated list of algorithms to execute (e.g., A1, A2, A3, A4, A5) |
+| `--typeOfData`   | Type of generated data (e.g., 1 or 2) |
+| `--shape`        | Shape of the generated boundary (e.g., 1 for Polygon, 2 for Ellipse) |
+| `--benchmarking` | Enable execution time and performance measurement |
 
 ---
 
@@ -64,16 +67,13 @@ The following command:
 
 ---
 
-# Output Files
+## 📁 Output Files
 
-Generated files are automatically saved in:
+Generated files are automatically saved in a directory corresponding to your `--typeOfData` selection:
+- If `--typeOfData 1` is used: `result/Type1/`
+- If `--typeOfData 2` is used: `result/Type2/`
 
-```text
-result/
-```
-
-Typical output files include:
-
+Typical output files inside these directories include:
 ```text
 _INPUT.csv
 _A1.csv
