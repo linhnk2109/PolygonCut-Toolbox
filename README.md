@@ -4,9 +4,7 @@
 
 This toolbox was implemented for the paper:
 
-> **Polygonal Cut Algorithms for Finding the Convex Hull  
-
-> of Finite Sets with Linear Complexity**
+> **Polygonal Cut Algorithms for Finding the Convex Hull of Finite Sets with Linear Complexity**
 
 ---
 
