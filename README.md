@@ -14,18 +14,50 @@ This toolbox is provided as pre-compiled standalone binaries for both macOS and 
 
 ## Installation Steps
 
+## Installation Steps
+
 1. Go to the **Releases** page of this GitHub repository.
+
 2. Download the appropriate version for your operating system:
    - **macOS:** `PolygonCutApp-macOS.zip`
    - **Windows:** `PolygonCutApp-Windows.zip`
+
 3. Extract the downloaded archive.
-4. Open your terminal (or Command Prompt) and navigate to the extracted `bin` directory:
 
-```bash
-cd PolygonCutApp/bin
-```
+4. Open the extracted folder.
 
----
+5. Start the PolygonCut environment:
+   - **Windows:** double-click `run.bat`
+   - **macOS:** double-click `run.command`
+
+6. A terminal window will appear with the message:
+
+   ```text
+   POLYGONCUT ENVIRONMENT IS READY!
+
+7. Example commands:
+
+   - **Windows:**
+     ```cmd
+     .\PolygonCutProject.exe --exportResult --setNumbers 1 --dataSizes 1000 --algorithms A1,A2,A3,A4,A5
+     ```
+
+   - **macOS:**
+     ```bash
+     ./PolygonCutProject --exportResult --setNumbers 1 --dataSizes 1000 --algorithms A1,A2,A3,A4,A5
+     ```
+8. Check the output files in the result folder.
+
+9. Note for macOS
+
+If macOS blocks run.command, open Terminal in the folder containing the extracted app and run:
+chmod -R u+rwx PolygonCutApp-macOS
+xattr -dr com.apple.quarantine PolygonCutApp-macOS
+
+Then double-click run.command again.
+
+
+
 
 # Running the Experiments
 
