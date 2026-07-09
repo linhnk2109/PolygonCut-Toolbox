@@ -14,8 +14,6 @@ This toolbox is provided as pre-compiled standalone binaries for both macOS and 
 
 ## Installation Steps
 
-## Installation Steps
-
 1. Go to the **Releases** page of this GitHub repository.
 
 2. Download the appropriate version for your operating system:
@@ -51,9 +49,10 @@ This toolbox is provided as pre-compiled standalone binaries for both macOS and 
 9. Note for macOS
 
 If macOS blocks run.command, open Terminal in the folder containing the extracted app and run:
+ ```cmd
 chmod -R u+rwx PolygonCutApp-macOS
 xattr -dr com.apple.quarantine PolygonCutApp-macOS
-
+ ```
 Then double-click run.command again.
 
 
