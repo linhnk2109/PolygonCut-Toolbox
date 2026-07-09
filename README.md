@@ -34,7 +34,11 @@ This toolbox is provided as pre-compiled standalone binaries for both macOS and 
    POLYGONCUT ENVIRONMENT IS READY!
 
 7. Example commands:
-
+The following command:
+- generates one dataset,
+- creates 1000 points,
+- executes algorithms A1–A5,
+- and exports all results to CSV files.
    - **Windows:**
      ```cmd
      .\PolygonCutProject.exe --exportResult --setNumbers 1 --dataSizes 1000 --algorithms A1,A2,A3,A4,A5
@@ -71,28 +75,6 @@ Then double-click run.command again.
 | `--typeOfData`   | Type of generated data (e.g., 1 or 2) |
 | `--shape`        | Shape of the generated boundary (e.g., 1 for Polygon, 2 for Ellipse) |
 | `--benchmarking` | Enable execution time and performance measurement |
-
----
-
-## Example Command
-
-The following command:
-- generates one dataset,
-- creates 1000 points,
-- executes algorithms A1–A5,
-- and exports all results to CSV files.
-
-### macOS / Linux
-
-```bash
-./PolygonCutProject --exportResult --setNumbers 1 --dataSizes 1000 --algorithms A1,A2,A3,A4,A5
-```
-
-### Windows
-
-```cmd
-.\PolygonCutProject.exe --exportResult --setNumbers 1 --dataSizes 1000 --algorithms A1,A2,A3,A4,A5
-```
 
 ---
 
